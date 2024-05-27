@@ -1,0 +1,44 @@
+//font-family: 'Noto Sans KR', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+	font-family: 'Freesentation-9Black';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+	font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: 0.35px;
+
+	@media (max-width: 1200px) {
+		font-size: 14px;
+	}
+
+	@media (max-width: 1024px) {
+		font-size: 13px;	
+	}
+
+	@media (max-width: 768px) {
+		font-size: 12px;
+	}
+}
+
+ul, li, ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+p, span, em, a {
+	color: #888;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #777;
+}

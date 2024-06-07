@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 export default {
 	setup() {
@@ -45,27 +45,35 @@ export default {
 			mobilHeaderBtn.value = false;
 		}
 
-		const containerScrollPos = [];
-
 		const navActive = ref(1);
+		const containerScrollPos = [];
+		const initScroll = () => {
+			const section = document.querySelectorAll('.container');
 
-		onMounted(() => {
-			const IntroSection = document.querySelectorAll('.container');
-
-			IntroSection.forEach((section) => {
+			section.forEach((section) => {
 				containerScrollPos.push(section.getBoundingClientRect().top + window.scrollY)
 			})
+		}
+		const scrollHandler = () => {
+			const section = document.querySelectorAll('.container');
 
-			document.addEventListener('scroll', () => {
-				const scorllPos = window.scrollY;
-				const containerIdx = containerScrollPos.findIndex(pos => scorllPos < pos - 50);
+			const scorllPos = window.scrollY;
+			const containerIdx = containerScrollPos.findIndex(pos => scorllPos < pos - 50);
+			console.log(scorllPos);
+			if (containerIdx === -1) {
+				navActive.value = section.length
+			} else {
+				navActive.value = containerIdx;
+			};
+		}
 
-				if (containerIdx === -1) {
-					navActive.value = IntroSection.length
-				} else {
-					navActive.value = containerIdx;
-				};
-			})
+		onMounted(() => {
+			initScroll();
+			document.addEventListener('scroll', scrollHandler)
+		});
+
+		onUnmounted(() => {
+			document.addEventListener('scroll', scrollHandler)
 		})
 
 		return {
@@ -80,7 +88,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../scss/mixin.scss';
+@import '../../scss/mixin.scss';
 
 header {
 	width: 500px;
@@ -164,7 +172,7 @@ header {
 
 				&::after {
 					width: 30%;
-    			transition: 0.5s all;
+					transition: 0.5s all;
 				}
 			}
 		}

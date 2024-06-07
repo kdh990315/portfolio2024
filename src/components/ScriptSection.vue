@@ -68,10 +68,20 @@ export default {
 					id: 4,
 					title: 'Parallax - css',
 					des: `
-						<p>Parallax효과를 css만으로 나타내보았습니다..</p><br>
+						<p>Parallax효과를 css만으로 나타내보았습니다.</p><br>
 						<p>background-attachment의 속성을 활용하여 보다 쉽게 Parallax효과를 구현해보았습니다.</p><br>
 					`,
 					link: 'https://codepen.io/dwmnhedo-the-encoder/details/LYoWWXx'
+				},
+				{
+					id: 5,
+					title: 'Scroll SVG Animation',
+					des: `
+						<p>순수 자바스크립트로 scroll svg animation을 구현하였습니다.</p><br>
+						<p>사용자의 scrollY 값에 따라서 svg요소가 채워지도록 하였습니다.</p><br>
+						<p>css의 stroke 속성들을 사용하여 구현하였습니다.</p><br>
+					`,
+					link: 'https://codepen.io/dwmnhedo-the-encoder/pen/wvbdpqr'
 				},
 			]
 		}

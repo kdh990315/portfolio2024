@@ -2,14 +2,15 @@
 	<div class="project_postscript">
 		<div class="main_title">
 			<h4>🌟 느낀점</h4>
-			<span>존나 하기 싫다ㅏㅏㅏ</span>
 		</div>
+
+		<div class="project_text" v-html="detailPostscript"></div>
 	</div>
 </template>
 
 <script>
 export default {
-
+	props: ['detailPostscript'],
 }
 </script>
 
@@ -20,6 +21,14 @@ export default {
 
 		h4 {
 			font-size: 2rem;
+		}
+	}
+
+	.project_text {
+		line-height: 1.5rem;
+
+		p {
+			letter-spacing: 1px;
 		}
 	}
 }

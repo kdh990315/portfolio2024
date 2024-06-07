@@ -9,13 +9,13 @@
 </template>
 
 <script>
+import HeaderSection from '../components/layout/HeaderSection.vue';
 import IntroSection from '../components/IntroSection.vue';
 import SkillSection from '../components/SkillSection.vue';
 import ProjectSection from '../components/ProjectSection.vue';
 import ScriptSection from '../components/ScriptSection.vue';
-import HeaderSection from '../components/HeaderSection.vue';
 import AboutmeSection from '../components/AboutmeSection.vue';
-import FooterSection from '../components/FooterSection.vue';
+import FooterSection from '../components/layout/FooterSection.vue';
 
 export default {
 	components: {

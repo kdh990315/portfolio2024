@@ -5,7 +5,7 @@
       <BaseButton class='closeBtn' @click="goToBack">close</BaseButton>
       <ProjectIntro :detailIntroDatas="projectData.intro"></ProjectIntro>
       <ProjectMainFuc :detailDatas="projectData.detail"></ProjectMainFuc>
-      <ProjectPostscript></ProjectPostscript>
+      <ProjectPostscript :detailPostscript="projectData.postscript"></ProjectPostscript>
     </article>
     <article v-else>
       <p>프로젝트 데이터를 불러올 수 없습니다.</p>
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     goToBack() {
-      this.$router.go(-1);
+      this.$router.push('/');
     }
   }
 };

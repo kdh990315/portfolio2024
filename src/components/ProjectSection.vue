@@ -102,6 +102,10 @@ export default {
 				.project_text {
 					margin-left: 3rem;
 
+					@media (max-width: 600px) {
+						margin-left: 0;
+					}
+
 					.project_title {
 						font-size: 1.5rem;
 						padding-top: 3rem;

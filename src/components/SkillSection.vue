@@ -146,6 +146,10 @@ export default {
 				flex-wrap: wrap;
 				cursor: pointer;
 
+				@media (max-width: 600px) {
+					justify-content: space-between;
+				}
+
 				li {
 					width: 45%;
 					display: flex;

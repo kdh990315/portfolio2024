@@ -29,16 +29,20 @@ export default {
     return {
       projectId: '',
       projectData: null,
+      prevScrollPos: 0,
     };
   },
   mounted() {
+    this.prevScrollPos = window.scrollY;
     this.projectId = this.$route.params.projectId;
     this.projectData = projectDatas.find(project => project.id === this.projectId);
     window.scrollTo(0, 0);
   },
   methods: {
     goToBack() {
-      this.$router.push('/');
+      this.$router.push('/').then(() => {
+        window.scrollTo(0, this.prevScrollPos);
+      });
     }
   }
 };

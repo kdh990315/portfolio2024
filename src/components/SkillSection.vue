@@ -164,6 +164,11 @@ export default {
 						text-align: center;
 						margin-right: 1rem;
 						color: #fff;
+
+						@media (max-width:1200px) {
+							font-size: 4rem;
+							line-height: 0px;
+						}
 					}
 				}
 			}

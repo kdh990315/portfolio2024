@@ -75,6 +75,11 @@ export default {
 			.project_contents {
 				display: flex;
 				padding-bottom: 70px;
+
+				@media (max-width: 600px) {
+					flex-direction: column;
+    			align-items: center;
+				}
 				
 				&:not(:last-child) {
 					border-bottom: 1px solid #ccc;
@@ -103,6 +108,10 @@ export default {
 
 						@media (max-width: 768px) {
 							padding-top: 7rem;
+						}
+
+						@media (max-width: 600px) {
+							padding-top: 3rem;
 						}
 					}
 

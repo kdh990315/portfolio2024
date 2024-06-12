@@ -49,7 +49,7 @@ export default {
 					id: 2,
 					title: 'Starry Night Effect',
 					des: `
-						<p>JavaScript를 활용하여 웹페지에 별이 반짝거리는 효과를 나타내봤습니다.</p><br>
+						<p>JavaScript를 활용하여 웹페이지에 별이 반짝거리는 효과를 나타내봤습니다.</p><br>
 						<p>createDocumentFragment()를 사용하여 여러 DOM조작을 한번에 처리해 성능상 이점을 가져올 수 있도록 구현했습니다.</p><br>
 						<p>setProperty()메서드를 활용하여 css의 스타일을 동적으로 변경하였습니다.</p>
 					`,
@@ -122,7 +122,7 @@ export default {
 
 			@media (max-width: 600px) {
 				justify-content: center;
-				
+				perspective: 5000px;
 			}
 
 			.card {
@@ -140,6 +140,10 @@ export default {
 				@media (max-width: 1200px) {
 					width: 20rem;
 					height: 25rem;
+				}
+
+				@media (max-width: 600px) {
+					margin-bottom: 5rem;
 				}
 
 				.card_contents {

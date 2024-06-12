@@ -51,15 +51,14 @@ export default {
 			const section = document.querySelectorAll('.container');
 
 			section.forEach((section) => {
-				containerScrollPos.push(section.getBoundingClientRect().top + window.scrollY)
-			})
+				containerScrollPos.push(section.offsetTop);
+			});
 		}
 		const scrollHandler = () => {
 			const section = document.querySelectorAll('.container');
 
 			const scorllPos = window.scrollY;
 			const containerIdx = containerScrollPos.findIndex(pos => scorllPos < pos - 50);
-			console.log(scorllPos);
 			if (containerIdx === -1) {
 				navActive.value = section.length
 			} else {
@@ -73,7 +72,7 @@ export default {
 		});
 
 		onUnmounted(() => {
-			document.addEventListener('scroll', scrollHandler)
+			document.removeEventListener('scroll', scrollHandler)
 		})
 
 		return {

@@ -6,7 +6,7 @@ export const projectDatas = [
 			github: 'https://github.com/kdh990315/fishing-reservation',
 			img: '/images/fishing.png',
 			title: '낙시고 - 낚시 예약 사이트',
-			language: 'Vue.js',
+			language: 'Vue.js, Vuex',
 			api: '카카오 지도 api',
 			responsive: '적용됨',
 			outline: `낙시고는 낚시가 취미인 개발자가 자신의 취미를 웹페이지로 만들고자 시작한 프로젝트입니다. 이 웹 애플리케이션은 낚시를 즐기는 사람들을 위한 커뮤니티 플랫폼으로서, 사용자들은 선박 등록과 예약을 편리하게 관리할 수 있습니다.`,
@@ -221,5 +221,80 @@ export const projectDatas = [
 		이 프로젝트는 단순한 클론 코딩을 넘어서 실제 웹사이트를 제작하는 과정에서 고려해야 할 다양한 기술적 요소들을 직접 구현해보는 경험을 할 수 있었습니다. 
 		이런 경험을 바탕으로 자바스크립트를 활용하여 웹사이트의 동적 요소를 구현하는 과정에서 많은 자신감을 얻을 수 있는 프로젝트였습니다.</p>
 		`
+	},
+	{
+		id: 'p4',
+		intro: {
+			link: 'https://todo-list-nuxt-ts.vercel.app/',
+			github: 'https://github.com/kdh990315/TodoList-nuxt-ts',
+			img: '/images/TodoList.png',
+			title: 'TodoList',
+			language: 'Nuxt3, Typescript, pinia',
+			api: '사용하지 않음',
+			responsive: '적용되지 않음',
+			outline: `최근 유행하는 Nuxt.js와 Pinia, TypeScript를 활용하여 간단한 TodoList를 제작하였습니다. Nuxt.js와 Typescript, pinia는 공식문서를 참고하여 공부하였습니다.`,
+			hashtags: ['vue.js', 'Nuxt.js', 'Typescript', 'pinia를', 'scss', 'html5', 'Nuxt Router', 'fetch', 'async/await', 'axios']
+		},
+		detail: {
+			1: {
+				title: '추가하기',
+				reviews: [
+					{1: 'Axios의 post메서드를 활용하여 firebase의 실시간 데이터 베이스에 새로운 컨텐츠를 추가하였습니다.'},
+					{2: '제출하기 전 데이터를 검사하여 공백이 있을 경우 동적 클래스를 활용하여 공백이 있는 요소를 나타내주었습니다.'},
+				],
+				video: '/video/TodoList/addTodo.mp4',
+			},
+			2: {
+				title: '달성여부 바꾸기',
+				reviews: [
+					{1: 'Axios의 patch()메서드를 활용하여 data의 state를 업데이트할 수 있게 구현했습니다.'},
+					{2: 'pinia에서 제공하는 반응성의 특징 활용하여 각 state에 맞는 TodoData를 가져오 수 있게 하였습니다.'},
+				],
+				video: '/video/TodoList/changeStatus.mp4',
+			},
+			3: {
+				title: '삭제하기',
+				reviews: [
+					{1: 'Axios의 delete()메서드를 활용하여 해당 data의 id를 확인하고 firebase의 실시간 데이터 베이스에서 data를 삭제하였습니다.'},
+					{2: 'confirm()메서드를 확인하여 사용자가 실수로 삭제버튼을 눌러도 바로 삭제되지 않고 한번 더 물어볼 수 있도록 하여 사용자 경험을 높혔습니다.'},
+				],
+				video: '/video/TodoList/deleteTodo.mp4',
+			},
+			4: {
+				title: '로그인/회원가입',
+				reviews: [
+					{1: 'firebase의 auth기능을 활용하여 구현했습니다.'},
+					{2: 'firebase 서버에서 받은 token과 userid를 localstorage에 저장하여 사용자가 페이지를 떠나도 유지될 수 있도록 구현하였습니다.'},
+					{3: '사용자가 로그인을 한 시점부터 일정 시간이 지나면 자동으로 로그아웃이 되도록 구현하였습니다.'},
+					{4: '로그인 컴포넌트와 회원가입 컴포넌트를 따로 구분하지 않고 한 컴포넌트로 구현하여 중복을 피할 수 있었으며 사용자 경험을 위한 동적 애니메이션을 적용하였습니다.'},
+				],
+				video: '/video/TodoList/login.mp4',
+			},
+			5: {
+				title: 'Nuxt.js의 중첩 라우팅',
+				reviews: [
+					{1: '중첩 라우팅을 활용하여 페이지 위에 다른 페이지를 띄워 표시할 수 있도록 구현했습니다.'},
+					{2: '부모 컴포넌트의 폴더 이름과 하위 컴포넌트의 폴더 이름을 일치시킨 후 부모 컴포넌트의 NuxtPage태그를 작성하여 구현하였습니다.'},
+				],
+				video: '/video/TodoList/route.mp4',
+			},
+		},
+		postscript: `<p>
+			- Vue.js개발자들 사이에서 최근 유행하는 Nuxt.js와 Pinia, TypeScript를 활용하여 TodoList를 제작해보았습니다. <br><br>
+			- Nuxt.js를 활용하여 프로젝트를 제작하며 가장 크게 느껴졌던 장점 중 하나는 프로젝트 구조화가 매우 편리하게 되어 있다고 생각했습니다. 파일 기반의 라우팅 시스템으로 따로 라우트를 설정할 필요가 없어 라우트 설정의 복잡성을 줄일 수 있었습니다. <br><br>
+			- Nuxt.js는 디렉토리의 구조를 명확하게 제공하여 프로젝트의 파일을 일관성을 유지할 수 있다는 것도 큰 장점중에 하나였습니다. 만약, 팀원들과의 협업을 했을 때, 빠르게 이해하고 작업을 시작할 수 있을 거 같았습니다. <br><br><br>
+
+			- TypeScript를 처음 사용해보면서 코드의 타입을 명확하게 정의할 수 있었으며, 개발 중에 발생할 수 있는 타입 관련 오류들을 사전에 방지할 수 있었습니다. <br><br>
+			- TypeScript의 타입 정의를 통해서 코드의 가독성이 높아진 것을 느낄 수 있었습니다. <br><br><br>
+
+			- Pinia를 사용하면서 Vue3와 매우 친화적이였고 Vuex보다 간단하고 직관적이어서 빠르게 상태관리를 시작할 수 있었습니다.<br><br>
+			- Pinia는 TypeScript를 기반으로 설계되었기 때문에 타입의 안정성도 뛰어나다고 생각합니다. <br><br>
+			- Vuex를 사용하다보면 반응성을 가지기 위해 코드를 추가하는 경우가 있었는데 Pinia를 사용하면서 자동으로 Vue3의 반응성을 가지는 것도 매우 편리하였습니다. <br><br>
+			- Pinia를 사용하면서 DevTools와의 통합이 Vuex보다 간결하고 쉬웠습니다.<br><br><br>
+
+			- fetch()메서드를 활용하여 비동기 작업을 처리할 떄 수동으로 json데이터를 파싱해야했지만, Axios를 함으로 자동으로 json데이터를 파싱해주어 코드를 간결하고 가독성이 좋게 사용할 수 있었습니다. <br><br><br>
+
+			- 위와 같은 언어들을 학습하면서 요즘 트렌드에 맞는 언어들은 반응성, 간결함, 유지보수성을 중시한다는 것을 느꼈습니다. 개발 트렌드에 도태되지 않기 위해서 공식문서를 참고하여 새로운 기능들을 학습해야겠다고 생각했습니다.
+		</p>`
 	},
 ]

@@ -11,7 +11,7 @@
 				<slot></slot>
 			</div>
 			<menu v-if="!fixed">
-				<button @click="tryClose">닫기</button>
+				<base-button @click="tryClose">닫기</base-button>
 			</menu>
 		</dialog>
 	</teleport>
@@ -89,6 +89,10 @@ dialog {
 		width: 100%;
 		padding: .5rem;
 		text-align: center;
+
+		h2 {
+			text-transform: uppercase;
+		}
 	}
 
 	div {

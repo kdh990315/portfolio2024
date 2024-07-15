@@ -106,6 +106,7 @@ header {
 		width: 300px;
 		top: 0;
 		right: -500px;
+		box-shadow: 1px 0px 19px 2px $main-color;
 
 		&.active {
 			right: 0;

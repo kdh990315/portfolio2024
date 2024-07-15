@@ -1,8 +1,8 @@
 <template>
-	<section id="aboutme_section" class="container">
+	<section id="aboutme_section" class="container" data-scroll>
 		<div class="aboutme_container">
 			<div class="container_title">
-				<h2>About Me</h2>
+				<h2 id="aboutme-text-animation-target"></h2>
 				<span>절대 포기하지 않고 항상 최선을 다하는 김동현이 되겠습니다. 감사합니다.</span>
 			</div>
 			<div class="aboutme_main">
@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import TypeIt from 'typeit';
+import ScrollOut from 'scroll-out';
+
 export default {
 	data() {
 		return {
@@ -29,6 +32,21 @@ export default {
 				{ title: 'mbti', body: 'ESTP' }
 			]
 		}
+	},
+	mounted() {
+		ScrollOut({
+			threshold: 0.2,
+		})
+
+		new TypeIt('#aboutme-text-animation-target', {
+			speed: 85,
+			waitUntilVisible: true,
+			loop: true,
+		})
+		.type("about me", { delay: 400 })
+    .delete(20)
+    .type("끝까지 봐주셔서 감사합니다 :)", { delay: 500 })
+    .go();
 	}
 }
 
@@ -36,6 +54,22 @@ export default {
 
 <style scoped lang="scss">
 @import '../scss/mixin.scss';
+
+.container[data-scroll] {
+	opacity: 0;
+	will-change: transform, scale, opacity;
+	transform: translateY(6rem) scale(0.93);
+	transition: all 1.5s cubic-bezier(.165, .84, .44, 1);
+}
+
+.container[data-scroll="in"] {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+
+.container[data-scroll="out"] {
+	opacity: 0;
+}
 
 #aboutme_section {
 	width: 100%;

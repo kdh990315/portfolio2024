@@ -1,12 +1,12 @@
 <template>
-	<section id="project_section" class="container">
+	<section id="project_section" class="container" data-scroll>
 		<div class="project_container">
 			<div class="container_title">
-				<h2>my project</h2>
+				<h2 id="project-text-animation-target"></h2>
 				<span>나의 프로젝트</span>
 			</div>
 			<div class="project_contents_container">
-				<div class="project_contents" v-for="data in projectData" :key="data.id">
+				<div class="project_contents" v-for="data in projectData" :key="data.id" data-scroll>
 					<div class="title_img">
 						<img :src="data.intro.img" :alt="data.intro.title">
 					</div>
@@ -27,6 +27,8 @@
 
 <script>
 import { projectDatas } from '../data/projectDatas.js';
+import ScrollOut from "scroll-out";
+import TypeIt from 'typeit';
 
 export default {
 	data() {
@@ -38,6 +40,20 @@ export default {
 		goToProjectDoc(projectId) {
 			this.$router.push(`/projectDoc/${projectId}`);
 		}
+	},
+	mounted() {
+		ScrollOut({
+			threshold: .2,
+		});
+		new TypeIt("#project-text-animation-target", {
+        speed: 85,
+        waitUntilVisible: true,
+        loop: true,
+    })
+    .type("my project", { delay: 400 })
+    .delete(20)
+    .type("나의 프로젝트들..", { delay: 500 })
+    .go();
 	}
 }
 </script>
@@ -45,11 +61,24 @@ export default {
 <style scoped lang="scss">
 @import '../scss/mixin.scss';
 
-#project_section {
-	width: 100%;
-	height: 100%;
-	border-top: solid 6px #f4f4f4;
+[data-scroll] {
+	opacity: 0;
+  will-change: transform, scale, opacity;
+  transform: translateY(6rem) scale(0.93);
+  transition: all 1.5s cubic-bezier(.165, .84, .44, 1);
+}
 
+[data-scroll="in"] {
+	opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+[data-scroll="out"] {
+	opacity: 0;
+}
+
+
+#project_section {
 	@include container();
 
 	.project_container {

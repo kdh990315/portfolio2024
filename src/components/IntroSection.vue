@@ -4,7 +4,7 @@
 			<div class="intro_text_container">
 				<div class="title">
 					<h2>portfolio</h2>
-					<span>Frontend Developer</span>
+					<span id="intro-text-animation-target"></span>
 				</div>
 				<p>안녕하세요. 저의 포트폴리오에 오신 것을 환영합니다.</p>
 				<p>프론트엔드 개발자를 꿈꾸며 준비한 결과물들을 보기 쉽게 정리해 놓았습니다.</p>
@@ -24,15 +24,31 @@
 	</section>
 </template>
 
+<script setup>
+import { onMounted } from 'vue';
+import TypeIt from "typeit";
+
+onMounted(() => {
+	new TypeIt("#intro-text-animation-target", {
+		speed: 85,
+		waitUntilVisible: true,
+		loop: true,
+	})
+	.type("Frontend Developer !", {delay: 400})
+	.delete(20)
+	.type("프론트엔드 개발자를 꿈꾸는..", {delay: 500})
+	.go();
+})
+</script>
+
+
 <style scoped lang="scss">
 @import '../scss/mixin.scss';
 
 #intro_section {
-	width: 100%;
-	height: 100%;
-
 	@include container();
-
+	margin-top: 0;
+	
 	.intro_text_container {
 		padding: 200px 0 100PX 0;
 		letter-spacing: 1.2px;

@@ -8,7 +8,7 @@
 	<FooterSection></FooterSection>
 </template>
 
-<script>
+<script setup>
 import HeaderSection from '../components/layout/HeaderSection.vue';
 import IntroSection from '../components/IntroSection.vue';
 import SkillSection from '../components/SkillSection.vue';
@@ -17,15 +17,5 @@ import ScriptSection from '../components/ScriptSection.vue';
 import AboutmeSection from '../components/AboutmeSection.vue';
 import FooterSection from '../components/layout/FooterSection.vue';
 
-export default {
-	components: {
-		IntroSection,
-		SkillSection,
-		ProjectSection,
-		ScriptSection,
-		HeaderSection,
-		AboutmeSection,
-		FooterSection,
-	}
-}
+
 </script>

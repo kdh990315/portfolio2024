@@ -1,26 +1,28 @@
 <template>
-	<section id="script_section" class="container">
+	<section id="script_section" class="container" data-scroll>
 		<div class="script_container">
 			<div class="container_title">
-				<h2>My Script</h2>
+				<h2 id="script-text-animation-target"></h2>
 				<span>제가 공부하면서 배운 기능을 codepen에 기록해 놓았습니다.</span>
 			</div>
 
 			<div class="script_main">
-				<div class="card" v-for="itemData in itemDatas" :key="itemData.id">
-					<div class="card_contents front">
-						<strong>{{ itemData.id }}</strong>
-						<div class="card_title">
-							<span>{{itemData.title}}</span>
+				<div class="card_wrap" v-for="(itemData, idx) in itemDatas" :key="itemData.id" :data-index="idx" data-scroll>
+					<div class="card">
+						<div class="card_contents front">
+							<strong>{{ itemData.id }}</strong>
+							<div class="card_title">
+								<span>{{ itemData.title }}</span>
+							</div>
 						</div>
-					</div>
-					<div class="card_contents back">
-						<h4>{{itemData.title}}</h4>
+						<div class="card_contents back">
+							<h4>{{ itemData.title }}</h4>
 
-						<p v-html="itemData.des"></p>
+							<p v-html="itemData.des"></p>
 
-						<div class="btn_container">
-							<BaseButton :link="true" :url="itemData.link">codePen</BaseButton>
+							<div class="btn_container">
+								<BaseButton :link="true" :url="itemData.link">codePen</BaseButton>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -31,6 +33,9 @@
 </template>
 
 <script>
+import TypeIt from 'typeit';
+import ScrollOut from "scroll-out";
+
 export default {
 	data() {
 		return {
@@ -83,19 +88,77 @@ export default {
 					`,
 					link: 'https://codepen.io/dwmnhedo-the-encoder/pen/wvbdpqr'
 				},
+				{
+					id: 6,
+					title: 'css-grid',
+					des: `
+						<p>css의 grid속성을 활용하여 2차원 레이아웃을 간단하게 구현했습니다.</p><br>
+						<p>fr단위를 사용하여 반응형 디자인에 더욱 유리하게 구현했습니다.</p><br>
+						<p>다양한 이미지 hover효과를 구현했습니다.</p><br>
+					`,
+					link: 'https://kdh990315.github.io/css-grid-hover/'
+				},
 			]
 		}
 	},
+	mounted() {
+		ScrollOut({
+			threshold: .2,
+			onShown: function (el) {
+				const idx = el.getAttribute('data-index');
+				el.style.transitionDelay = `${idx * 0.25}s`;
+			}
+		});
+
+		new TypeIt("#script-text-animation-target", {
+			speed: 85,
+			waitUntilVisible: true,
+			loop: true,
+		})
+			.type("My Script", { delay: 400 })
+			.delete(20)
+			.type("다양한 작업물들..", { delay: 500 })
+			.go();
+	}
 }
 </script>
 
 <style scoped lang="scss">
 @import '../scss/mixin.scss';
 
-#script_section {
-	width: 100%;
-	border-top: solid 6px #f4f4f4;
+.container[data-scroll] {
+	opacity: 0;
+	will-change: transform, scale, opacity;
+	transform: translateY(6rem) scale(0.93);
+	transition: all 1.5s cubic-bezier(.165, .84, .44, 1);
+}
 
+.container[data-scroll="in"] {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+
+.container[data-scroll="out"] {
+	opacity: 0;
+}
+
+.card_wrap[data-scroll] {
+	opacity: 0;
+	will-change: transform, scale, opacity;
+	transform: translateX(6rem) scale(0.85) rotate(-10deg);
+	transition: all 1.5s cubic-bezier(.165, .84, .44, 1);
+}
+
+.card_wrap[data-scroll='in'] {
+	opacity: 1;
+	transform: translateX(0) scale(1) skew(0);
+}
+
+.card_wrap[data-scroll='out'] {
+	opacity: 0;
+}
+
+#script_section {
 	@include container();
 
 	.script_container {
@@ -125,17 +188,11 @@ export default {
 				perspective: 5000px;
 			}
 
-			.card {
+			.card_wrap {
 				width: 280px;
 				height: 350px;
 				margin-right: 2rem;
 				margin-bottom: 2rem;
-				border-radius: 2rem;
-				position: relative;
-				box-shadow: 5px 5px 5px #eaeaea;
-				transform-style: preserve-3d;
-				transform: rotateY(0);
-				transition: 1s;
 
 				@media (max-width: 1200px) {
 					width: 20rem;
@@ -146,69 +203,80 @@ export default {
 					margin-bottom: 5rem;
 				}
 
-				.card_contents {
+				.card {
 					width: 100%;
 					height: 100%;
+					transform-style: preserve-3d;
+					transform: rotateY(0);
+					transition: 1s;
+					position: relative;
+					box-shadow: 5px 5px 5px #eaeaea;
 					border-radius: 2rem;
-					position: absolute;
-					backface-visibility: hidden;
 
-					.card_title {
+					.card_contents {
 						width: 100%;
-						height: 80px;
-						background-color: #fff;
+						height: 100%;
+						border-radius: 2rem;
 						position: absolute;
-						top: 50%;
-						transform: translateY(-50%);
+						backface-visibility: hidden;
 
-						span {
+						.card_title {
 							width: 100%;
-							font-size: 1.2rem;
-							text-align: center;
+							height: 80px;
+							background-color: #fff;
 							position: absolute;
-							@include position-center;
+							top: 50%;
+							transform: translateY(-50%);
+
+							span {
+								width: 100%;
+								font-size: 1.2rem;
+								text-align: center;
+								position: absolute;
+								@include position-center;
+							}
+						}
+					}
+
+					.front {
+						background-color: $main-color;
+
+						strong {
+							position: absolute;
+							top: .2rem;
+							left: 1rem;
+							font-size: 2.5rem;
+							color: #9d9797;
+						}
+					}
+
+					.back {
+						background-color: #fff5ec;
+						transform: rotateY(180deg);
+
+						h4 {
+							font-size: 1.1rem;
+							text-align: center;
+							padding: .5rem 0;
+						}
+
+						p {
+							font-size: .9rem;
+							padding: 0 .5rem;
+							letter-spacing: .8px;
+							margin-top: 1rem;
+						}
+
+						.btn_container {
+							position: absolute;
+							bottom: 1.5rem;
+							left: 50%;
+							transform: translateX(-50%);
 						}
 					}
 				}
 
-				.front {
-					background-color: $main-color;
-
-					strong {
-						position: absolute;
-						top: .2rem;
-						left: 1rem;
-						font-size: 2.5rem;
-						color: #9d9797;
-					}
-				}
-
-				.back {
-					background-color: #fff5ec;
-					transform: rotateY(180deg);
-
-					h4 {
-						font-size: 1.1rem;
-						text-align: center;
-						padding: .5rem 0;
-					}
-
-					p {
-						font-size: .9rem;
-						padding: 0 .5rem;
-						letter-spacing: .8px;
-						margin-top: 1rem;
-					}
-
-					.btn_container {
-						position: absolute;
-						bottom: 1.5rem;
-						left: 50%;
-						transform: translateX(-50%);
-					}
-				}
-
-				&:hover {
+				&:hover > .card {
 					transform: rotateY(180deg);
 				}
 			}

@@ -25,7 +25,7 @@ import { ref } from 'vue';
 export default {
 	props: ['detailDatas'],
 	setup() {
-		const fucIsVisible = ref({});
+		const fucIsVisible = ref({1: true});
 
 		const fucIsVisibleHandler = (key) => {
 			fucIsVisible.value[key] = !fucIsVisible.value[key];

@@ -7,8 +7,7 @@
 			</div>
 			<div class="skill_wrap">
 				<ul class="skill_box">
-					<li v-for="(data, idx) in skillData" @click="openModal(data.title, data.doc)" :data-index="idx" class="skill"
-						data-scroll>
+					<li v-for="(data, idx) in skillData" @click="openModal(data.title, data.doc)" :data-index="idx" class="skill">
 						<span v-html="data.icon" class="icon"></span>
 						<span>{{ data.title }}</span>
 					</li>
@@ -127,9 +126,6 @@ onMounted(() => {
             const idx = el.getAttribute('data-index');
             el.style.transitionDelay = `${idx * 0.15}s`;
         },
-        onHidden: function (el) {
-            el.style.transitionDelay = `0s`;
-        }
     });
 
     new TypeIt("#skill-text-animation-target", {
@@ -162,22 +158,6 @@ onMounted(() => {
 }
 
 .container[data-scroll="out"] {
-	opacity: 0;
-}
-
-.skill[data-scroll] {
-	opacity: 0;
-	will-change: transform, scale, opacity;
-	transform: translateX(6rem) scale(0.85);
-	transition: all 1.5s cubic-bezier(.165, .84, .44, 1);
-}
-
-.skill[data-scroll='in'] {
-	opacity: 1;
-	transform: translateX(0) scale(1);
-}
-
-.skill[data-scroll='out'] {
 	opacity: 0;
 }
 

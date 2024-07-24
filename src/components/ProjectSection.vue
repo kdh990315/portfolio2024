@@ -6,7 +6,7 @@
 				<span>나의 프로젝트</span>
 			</div>
 			<div class="project_contents_container">
-				<div class="project_contents" v-for="data in projectData" :key="data.id" data-scroll>
+				<div class="project_contents" v-for="data in projectData" :key="data.id">
 					<div class="title_img">
 						<img :src="data.intro.img" :alt="data.intro.title">
 					</div>
@@ -76,7 +76,6 @@ export default {
 [data-scroll="out"] {
 	opacity: 0;
 }
-
 
 #project_section {
 	@include container();

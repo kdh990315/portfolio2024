@@ -7,7 +7,7 @@
 			</div>
 
 			<div class="script_main">
-				<div class="card_wrap" v-for="(itemData, idx) in itemDatas" :key="itemData.id" :data-index="idx" data-scroll>
+				<div class="card_wrap" v-for="(itemData, idx) in itemDatas" :key="itemData.id" :data-index="idx">
 					<div class="card">
 						<div class="card_contents front">
 							<strong>{{ itemData.id }}</strong>
@@ -104,10 +104,6 @@ export default {
 	mounted() {
 		ScrollOut({
 			threshold: .2,
-			onShown: function (el) {
-				const idx = el.getAttribute('data-index');
-				el.style.transitionDelay = `${idx * 0.25}s`;
-			}
 		});
 
 		new TypeIt("#script-text-animation-target", {
@@ -139,22 +135,6 @@ export default {
 }
 
 .container[data-scroll="out"] {
-	opacity: 0;
-}
-
-.card_wrap[data-scroll] {
-	opacity: 0;
-	will-change: transform, scale, opacity;
-	transform: translateX(6rem) scale(0.85) rotate(-10deg);
-	transition: all 1.5s cubic-bezier(.165, .84, .44, 1);
-}
-
-.card_wrap[data-scroll='in'] {
-	opacity: 1;
-	transform: translateX(0) scale(1) skew(0);
-}
-
-.card_wrap[data-scroll='out'] {
 	opacity: 0;
 }
 
